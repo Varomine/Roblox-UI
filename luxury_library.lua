@@ -1,10 +1,3 @@
---[[
-    Fluent UI Roblox Library - V1.0.5
-    An ultra-premium, Windows Fluent-inspired UI framework for Roblox.
-    Features dynamic absolute dropdown tracking, drag-to-resize window support,
-    integrated settings overlay dialog (keybind toggle, size reset), user profile card,
-    clean focus-based outline borders, and smooth tab transitions.
---]]
 
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -153,7 +146,7 @@ function Library:Notify(options)
     local title = options.Title or "Notification"
     local content = options.Content or ""
     local duration = options.Duration or 4
-    local icon = options.Icon or "rbxassetid://7072721666"
+    local icon = "http://www.roblox.com/asset/?id=6023426923" -- Forced default, user cannot change
 
     local gui = self:InitGui()
     local theme = self.CurrentTheme or self.Themes.Gold
@@ -207,7 +200,7 @@ function Library:Notify(options)
     imgIcon.Position = UDim2.new(0, 18, 0.5, -10)
     imgIcon.BackgroundTransparency = 1
     imgIcon.Image = icon
-    imgIcon.ImageColor3 = theme.Accent
+    imgIcon.ImageColor3 = Color3.fromRGB(255, 255, 255)
     imgIcon.Parent = toast
 
     local lblTitle = Instance.new("TextLabel")
@@ -483,20 +476,23 @@ function Library:CreateWindow(config)
     settingsIcon.Size = UDim2.new(0, 16, 0, 16)
     settingsIcon.Position = UDim2.new(0.5, -8, 0.5, -8)
     settingsIcon.BackgroundTransparency = 1
-    settingsIcon.Image = "rbxassetid://7072721666" -- Public Settings Gear Icon
+    settingsIcon.Image = "http://www.roblox.com/asset/?id=6031280882" -- User's Settings Gear Icon
     settingsIcon.ImageColor3 = theme.TextDark
     settingsIcon.Parent = settingsBtn
 
-    -- Settings Overlay Dialog Panel (Frame with Active = true to sink clicks without flashing)
-    local settingsBackdrop = Instance.new("Frame")
+    -- Settings Overlay Dialog Panel (TextButton with Active = true to sink clicks without flashing)
+    local settingsBackdrop = Instance.new("TextButton")
     settingsBackdrop.Name = "SettingsBackdrop"
+    settingsBackdrop.Text = ""
+    settingsBackdrop.AutoButtonColor = false
     settingsBackdrop.Size = UDim2.new(1, 0, 1, 0)
+    settingsBackdrop.Position = UDim2.new(0, 0, 0, 0)
     settingsBackdrop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     settingsBackdrop.BackgroundTransparency = 1
     settingsBackdrop.Active = true -- blocks mouse click through
     settingsBackdrop.ZIndex = 800
     settingsBackdrop.Visible = false
-    settingsBackdrop.Parent = gui
+    settingsBackdrop.Parent = mainFrame
 
     local settingsFrame = Instance.new("Frame")
     settingsFrame.Size = UDim2.new(0, 320, 0, 220)
@@ -564,6 +560,7 @@ function Library:CreateWindow(config)
     local kbBtnStroke = Instance.new("UIStroke")
     kbBtnStroke.Color = theme.Border
     kbBtnStroke.Thickness = 1
+    kbBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     kbBtnStroke.Parent = kbBtn
 
     local bindingSettings = false
@@ -627,6 +624,7 @@ function Library:CreateWindow(config)
     local sizeBtnStroke = Instance.new("UIStroke")
     sizeBtnStroke.Color = theme.Border
     sizeBtnStroke.Thickness = 1
+    sizeBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     sizeBtnStroke.Parent = sizeBtn
 
     sizeBtn.MouseButton1Click:Connect(function()
@@ -660,6 +658,7 @@ function Library:CreateWindow(config)
     local csBtnStroke = Instance.new("UIStroke")
     csBtnStroke.Color = theme.Border
     csBtnStroke.Thickness = 1
+    csBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     csBtnStroke.Parent = closeSettingsBtn
 
     settingsBtn.MouseEnter:Connect(function()
@@ -678,6 +677,119 @@ function Library:CreateWindow(config)
         local f = Tween(settingsBackdrop, 0.15, {BackgroundTransparency = 1})
         f.Completed:Connect(function()
             settingsBackdrop.Visible = false
+        end)
+    end)
+
+    -- Close Confirmation Dialog Overlay Panel (TextButton with Active = true to sink clicks without flashing)
+    local closeConfirmBackdrop = Instance.new("TextButton")
+    closeConfirmBackdrop.Name = "CloseConfirmBackdrop"
+    closeConfirmBackdrop.Text = ""
+    closeConfirmBackdrop.AutoButtonColor = false
+    closeConfirmBackdrop.Size = UDim2.new(1, 0, 1, 0)
+    closeConfirmBackdrop.Position = UDim2.new(0, 0, 0, 0)
+    closeConfirmBackdrop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    closeConfirmBackdrop.BackgroundTransparency = 1
+    closeConfirmBackdrop.Active = true
+    closeConfirmBackdrop.ZIndex = 900
+    closeConfirmBackdrop.Visible = false
+    closeConfirmBackdrop.Parent = mainFrame
+
+    local closeConfirmFrame = Instance.new("Frame")
+    closeConfirmFrame.Size = UDim2.new(0, 280, 0, 140)
+    closeConfirmFrame.Position = UDim2.new(0.5, -140, 0.5, -70)
+    closeConfirmFrame.BackgroundColor3 = theme.Background
+    closeConfirmFrame.BorderSizePixel = 0
+    closeConfirmFrame.ZIndex = 901
+    closeConfirmFrame.Parent = closeConfirmBackdrop
+
+    local ccfCorner = Instance.new("UICorner")
+    ccfCorner.CornerRadius = UDim.new(0, 8)
+    ccfCorner.Parent = closeConfirmFrame
+
+    local ccfStroke = Instance.new("UIStroke")
+    ccfStroke.Color = theme.Border
+    ccfStroke.Thickness = 1
+    ccfStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ccfStroke.Parent = closeConfirmFrame
+
+    local ccfTitle = Instance.new("TextLabel")
+    ccfTitle.Size = UDim2.new(1, -24, 0, 30)
+    ccfTitle.Position = UDim2.new(0, 12, 0, 14)
+    ccfTitle.BackgroundTransparency = 1
+    ccfTitle.Font = Enum.Font.GothamBold
+    ccfTitle.TextSize = 14
+    ccfTitle.TextColor3 = theme.Text
+    ccfTitle.TextXAlignment = Enum.TextXAlignment.Center
+    ccfTitle.Text = "Exit Confirmation"
+    ccfTitle.ZIndex = 902
+    ccfTitle.Parent = closeConfirmFrame
+
+    local ccfDesc = Instance.new("TextLabel")
+    ccfDesc.Size = UDim2.new(1, -24, 0, 30)
+    ccfDesc.Position = UDim2.new(0, 12, 0, 44)
+    ccfDesc.BackgroundTransparency = 1
+    ccfDesc.Font = Enum.Font.Gotham
+    ccfDesc.TextSize = 11
+    ccfDesc.TextColor3 = theme.TextDark
+    ccfDesc.TextXAlignment = Enum.TextXAlignment.Center
+    ccfDesc.Text = "Are you sure you want to close the UI?"
+    ccfDesc.ZIndex = 902
+    ccfDesc.Parent = closeConfirmFrame
+
+    local ccfYesBtn = Instance.new("TextButton")
+    ccfYesBtn.Size = UDim2.new(0, 110, 0, 30)
+    ccfYesBtn.Position = UDim2.new(0.5, -115, 1, -44)
+    ccfYesBtn.BackgroundColor3 = theme.Accent
+    ccfYesBtn.Font = Enum.Font.GothamBold
+    ccfYesBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ccfYesBtn.TextSize = 11
+    ccfYesBtn.Text = "Yes"
+    ccfYesBtn.ZIndex = 902
+    ccfYesBtn.Parent = closeConfirmFrame
+
+    local ccfYesCorner = Instance.new("UICorner")
+    ccfYesCorner.CornerRadius = UDim.new(0, 4)
+    ccfYesCorner.Parent = ccfYesBtn
+
+    local ccfYesBtnStroke = Instance.new("UIStroke")
+    ccfYesBtnStroke.Color = theme.Border
+    ccfYesBtnStroke.Thickness = 1
+    ccfYesBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ccfYesBtnStroke.Parent = ccfYesBtn
+
+    local ccfNoBtn = Instance.new("TextButton")
+    ccfNoBtn.Size = UDim2.new(0, 110, 0, 30)
+    ccfNoBtn.Position = UDim2.new(0.5, 5, 1, -44)
+    ccfNoBtn.BackgroundColor3 = theme.Surface
+    ccfNoBtn.Font = Enum.Font.GothamBold
+    ccfNoBtn.TextColor3 = theme.Text
+    ccfNoBtn.TextSize = 11
+    ccfNoBtn.Text = "No"
+    ccfNoBtn.ZIndex = 902
+    ccfNoBtn.Parent = closeConfirmFrame
+
+    local ccfNoCorner = Instance.new("UICorner")
+    ccfNoCorner.CornerRadius = UDim.new(0, 4)
+    ccfNoCorner.Parent = ccfNoBtn
+
+    local ccfNoStroke = Instance.new("UIStroke")
+    ccfNoStroke.Color = theme.Border
+    ccfNoStroke.Thickness = 1
+    ccfNoStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ccfNoStroke.Parent = ccfNoBtn
+
+    ccfYesBtn.MouseButton1Click:Connect(function()
+        closeConfirmBackdrop.Visible = false
+        local fade = Tween(mainFrame, 0.2, {Size = UDim2.new(0, mainFrame.AbsoluteSize.X, 0, 0)})
+        fade.Completed:Connect(function()
+            gui:Destroy()
+        end)
+    end)
+
+    ccfNoBtn.MouseButton1Click:Connect(function()
+        local f = Tween(closeConfirmBackdrop, 0.15, {BackgroundTransparency = 1})
+        f.Completed:Connect(function()
+            closeConfirmBackdrop.Visible = false
         end)
     end)
 
@@ -741,10 +853,8 @@ function Library:CreateWindow(config)
     end)
 
     btnClose.MouseButton1Click:Connect(function()
-        local fade = Tween(mainFrame, 0.2, {Size = UDim2.new(0, mainFrame.AbsoluteSize.X, 0, 0)})
-        fade.Completed:Connect(function()
-            gui:Destroy()
-        end)
+        closeConfirmBackdrop.Visible = true
+        Tween(closeConfirmBackdrop, 0.2, {BackgroundTransparency = 0.5})
     end)
 
     -- Container for Pages
@@ -940,6 +1050,34 @@ function Library:CreateWindow(config)
             line.Parent = sectionFrame
         end
 
+        -- 1b. Create Label
+        function Tab:CreateLabel(lblConfig)
+            lblConfig = lblConfig or {}
+            local name = typeof(lblConfig) == "string" and lblConfig or (lblConfig.Name or "Label")
+
+            local labelFrame = Instance.new("Frame")
+            labelFrame.Size = UDim2.new(1, 0, 0, 30)
+            labelFrame.BackgroundTransparency = 1
+            labelFrame.Parent = scrollList
+
+            local label = Instance.new("TextLabel")
+            label.Size = UDim2.new(1, -20, 1, 0)
+            label.Position = UDim2.new(0, 10, 0, 0)
+            label.BackgroundTransparency = 1
+            label.Font = Enum.Font.Gotham
+            label.TextSize = 12
+            label.TextColor3 = theme.TextDark
+            label.TextXAlignment = Enum.TextXAlignment.Left
+            label.Text = name
+            label.Parent = labelFrame
+
+            local labelObj = {}
+            function labelObj:Set(newVal)
+                label.Text = newVal
+            end
+            return labelObj
+        end
+
         -- 2. Create Button
         function Tab:CreateButton(btnConfig)
             btnConfig = btnConfig or {}
@@ -960,6 +1098,7 @@ function Library:CreateWindow(config)
             local stroke = Instance.new("UIStroke")
             stroke.Color = theme.Border
             stroke.Thickness = 1
+            stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
             stroke.Parent = button
 
             local label = Instance.new("TextLabel")
@@ -1024,6 +1163,7 @@ function Library:CreateWindow(config)
             local stroke = Instance.new("UIStroke")
             stroke.Color = theme.Border
             stroke.Thickness = 1
+            stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
             stroke.Parent = toggleFrame
 
             local label = Instance.new("TextLabel")
@@ -1157,12 +1297,6 @@ function Library:CreateWindow(config)
             valCorner.CornerRadius = UDim.new(0, 4)
             valCorner.Parent = valLabel
 
-            local valStroke = Instance.new("UIStroke")
-            valStroke.Color = theme.Accent
-            valStroke.Thickness = 1
-            valStroke.Transparency = 1 -- Hide by default
-            valStroke.Parent = valLabel
-
             local track = Instance.new("TextButton")
             track.Size = UDim2.new(1, -28, 0, 4)
             track.Position = UDim2.new(0, 14, 0, 30)
@@ -1240,11 +1374,9 @@ function Library:CreateWindow(config)
             end)
 
             valLabel.Focused:Connect(function()
-                Tween(valStroke, 0.1, {Transparency = 0})
             end)
 
             valLabel.FocusLost:Connect(function(enterPressed)
-                Tween(valStroke, 0.1, {Transparency = 1})
                 local textNum = tonumber(valLabel.Text)
                 if not textNum then
                     valLabel.Text = tostring(val)
@@ -1484,7 +1616,7 @@ function Library:CreateWindow(config)
                 -- Close menu if clicked outside
                 listConnection = UserInputService.InputBegan:Connect(function(input)
                     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                        local clickPos = UserInputService:GetMouseLocation()
+                        local clickPos = UserInputService:GetMouseLocation() - game:GetService("GuiService"):GetGuiInset()
                         local fPos = floatingMenu.AbsolutePosition
                         local fSize = floatingMenu.AbsoluteSize
                         if clickPos.X < fPos.X or clickPos.X > fPos.X + fSize.X or clickPos.Y < fPos.Y or clickPos.Y > fPos.Y + fSize.Y then
@@ -1586,18 +1718,10 @@ function Library:CreateWindow(config)
             boxCorner.CornerRadius = UDim.new(0, 4)
             boxCorner.Parent = box
 
-            local boxStroke = Instance.new("UIStroke")
-            boxStroke.Color = theme.Accent
-            boxStroke.Thickness = 1
-            boxStroke.Transparency = 1 -- Hide by default
-            boxStroke.Parent = box
-
             box.Focused:Connect(function()
-                Tween(boxStroke, 0.1, {Transparency = 0})
             end)
 
             box.FocusLost:Connect(function(enterPressed)
-                Tween(boxStroke, 0.1, {Transparency = 1})
                 callback(box.Text)
             end)
 
@@ -1779,9 +1903,11 @@ function Library:CreateWindow(config)
 
             -- Create Custom Fluent Colorpicker Dialog Box Popup
             local function OpenColorpickerDialog()
-                -- Dialog background Frame with Active = true to sink clicks without flashing
-                local dialogBackdrop = Instance.new("Frame")
+                -- Dialog background TextButton with Active = true to sink clicks without flashing
+                local dialogBackdrop = Instance.new("TextButton")
                 dialogBackdrop.Name = "ColorpickerBackdrop"
+                dialogBackdrop.Text = ""
+                dialogBackdrop.AutoButtonColor = false
                 dialogBackdrop.Size = UDim2.new(1, 0, 1, 0)
                 dialogBackdrop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
                 dialogBackdrop.BackgroundTransparency = 0.5
@@ -1810,7 +1936,7 @@ function Library:CreateWindow(config)
                 local svPalette = Instance.new("ImageButton")
                 svPalette.Size = UDim2.new(0, 150, 0, 140)
                 svPalette.Position = UDim2.new(0, 12, 0, 40)
-                svPalette.Image = "rbxassetid://415583266"
+                svPalette.Image = "rbxassetid://4155801252"
                 svPalette.BackgroundTransparency = 0 -- Render background color behind transparent overlay image
                 svPalette.BorderSizePixel = 0
                 svPalette.ZIndex = 502
