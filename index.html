@@ -547,7 +547,10 @@ Slider:Set(120)</code></pre>
 })
 
 -- Set value programmatically
-Dropdown:Set("Torso")</code></pre>
+Dropdown:Set("Torso")
+
+-- Refresh the list of options dynamically
+Dropdown:Refresh({"Head", "Torso", "Lower Torso"})</code></pre>
           </div>
 
           <h3>Parameters</h3>
@@ -584,6 +587,29 @@ Dropdown:Set("Torso")</code></pre>
                 <td>function</td>
                 <td>nil</td>
                 <td>Fires when the option is changed. Returns the selected string choice.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Returned Object Methods</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Arguments</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Set</td>
+                <td><code>newOption: string</code></td>
+                <td>Programmatically updates the selected choice of the dropdown.</td>
+              </tr>
+              <tr>
+                <td>Refresh</td>
+                <td><code>newOptionsList: table</code></td>
+                <td>Dynamically replaces the choices within the dropdown menu with a new array of strings.</td>
               </tr>
             </tbody>
           </table>
