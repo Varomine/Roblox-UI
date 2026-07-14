@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="gold">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury UI - Premium Roblox UI Library Docs</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Highlight.js for Lua Code Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark-dimmed.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/lua.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- App Shell -->
+  <div class="app-container">
+    
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">LUXURY UI</span>
+          <span class="brand-version">v1.0.0</span>
+        </div>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="docs-search" placeholder="Search documentation..." autocomplete="off">
+        <div id="search-results" class="search-results"></div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Getting Started</div>
+        <a href="#intro" class="nav-link active" data-target="intro"><i class="fa-solid fa-compass"></i> Introduction</a>
+        <a href="#install" class="nav-link" data-target="install"><i class="fa-solid fa-download"></i> Installation</a>
+        <a href="#themes" class="nav-link" data-target="themes"><i class="fa-solid fa-palette"></i> Themes & Styling</a>
+
+        <div class="nav-section-title">API Components</div>
+        <a href="#window" class="nav-link" data-target="window"><i class="fa-regular fa-window-maximize"></i> Window</a>
+        <a href="#tab" class="nav-link" data-target="tab"><i class="fa-solid fa-folder-open"></i> Tab</a>
+        <a href="#section" class="nav-link" data-target="section"><i class="fa-solid fa-grip-lines"></i> Section</a>
+        <a href="#label" class="nav-link" data-target="label"><i class="fa-solid fa-tag"></i> Label</a>
+        <a href="#button" class="nav-link" data-target="button"><i class="fa-solid fa-square-minus"></i> Button</a>
+        <a href="#toggle" class="nav-link" data-target="toggle"><i class="fa-solid fa-toggle-on"></i> Toggle</a>
+        <a href="#slider" class="nav-link" data-target="slider"><i class="fa-solid fa-sliders"></i> Slider</a>
+        <a href="#dropdown" class="nav-link" data-target="dropdown"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+        <a href="#textbox" class="nav-link" data-target="textbox"><i class="fa-solid fa-keyboard"></i> TextBox</a>
+        <a href="#keybind" class="nav-link" data-target="keybind"><i class="fa-solid fa-keyboard"></i> Keybind</a>
+        <a href="#colorpicker" class="nav-link" data-target="colorpicker"><i class="fa-solid fa-eye-dropper"></i> Colorpicker</a>
+        <a href="#notification" class="nav-link" data-target="notification"><i class="fa-regular fa-bell"></i> Notifications</a>
+      </nav>
+
+      <!-- Theme Controls -->
+      <div class="theme-footer">
+        <span class="theme-label">Accent Theme</span>
+        <div class="theme-switch-container">
+          <button id="theme-gold-btn" class="theme-switch-btn active" title="Gold Accent"><i class="fa-solid fa-coins"></i></button>
+          <button id="theme-indigo-btn" class="theme-switch-btn" title="Indigo Accent"><i class="fa-solid fa-bolt"></i></button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 id="page-title">Introduction</h1>
+        </div>
+        <div class="topbar-right">
+          <a href="https://github.com/Varomine" target="_blank" class="github-link"><i class="fa-brands fa-github"></i> GitHub</a>
+          <button id="toggle-simulator-btn" class="simulator-toggle-btn"><i class="fa-solid fa-laptop"></i> Toggle Preview</button>
+        </div>
+      </header>
+
+      <!-- Documentation Content Wrapper -->
+      <div class="content-body" id="docs-content">
+        
+        <!-- SECTION: Introduction -->
+        <section id="sec-intro" class="doc-section active">
+          <p class="lead-text">Welcome to <strong>Luxury UI</strong>, the most sophisticated, high-performance, and visually stunning user interface framework for Roblox.</p>
+          <p>Luxury UI is engineered from the ground up using custom Luau objects to deliver absolute smoothness, flawless animations, and high-fidelity responsiveness. Designed around a sleek obsidian black and brushed metal theme, it provides developers and script hubs with an interface that looks premium and loads instantaneously.</p>
+
+          <div class="card">
+            <h3><i class="fa-solid fa-star text-gold"></i> Core Features</h3>
+            <ul class="features-list">
+              <li><strong>Absolute Luxury Theme</strong>: Deep charcoal and obsidian gradients, detailed thin strokes, glowing state-indicators, and elegant gold or indigo accenting.</li>
+              <li><strong>Sleek Draggable Windows</strong>: Draggable title bars, custom minimizations, and close functions.</li>
+              <li><strong>Rich Element Catalog</strong>: Over 10 fully interactive components including collapsible dropdowns, smooth slider tracks, textboxes, keybind listeners, and presets-based colorpickers.</li>
+              <li><strong>Dynamic Toasts</strong>: Queueable, rich notification toasts with duration-based progress bars.</li>
+              <li><strong>Dual-Mode Bootstrapper</strong>: Runs perfectly in Roblox Studio via standard PlayerGui, or bypasses detection inside CoreGui within injector environments.</li>
+            </ul>
+          </div>
+
+          <h3>Interactive Demo</h3>
+          <p>You can interact with the **Live Simulator** on the right side of the screen! Click on elements in the simulated screen, or use the interactive guide buttons inside the API reference to trigger animations and states in real-time.</p>
+        </section>
+
+        <!-- SECTION: Installation -->
+        <section id="sec-install" class="doc-section">
+          <h2>Quick Start & Installation</h2>
+          <p>To run Luxury UI in your script, simply copy and paste the loader bootstrapper below. It dynamically fetches the library script, creates a new execution context, and loads the user interface framework.</p>
+          
+          <h3>Loadstring Bootstrapper</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-bootstrapper"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-bootstrapper">local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Varomine/Roblox-UI/refs/heads/main/luxury_library.lua"))()
+
+local Window = Library:CreateWindow({
+    Name = "Luxury Hub",
+    Theme = "Gold" -- "Gold" or "Indigo"
+})</code></pre>
+          </div>
+
+          <h3>Development Mode (Roblox Studio)</h3>
+          <p>If you are writing scripts in Roblox Studio and want to load Luxury UI locally, place the `luxury_library.lua` code inside a `ModuleScript` named `LuxuryUI` under `ReplicatedStorage` and load it via `require`:</p>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-dev"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-dev">local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("LuxuryUI"))
+
+local Window = Library:CreateWindow({
+    Name = "Luxury Hub",
+    Theme = "Gold"
+})</code></pre>
+          </div>
+        </section>
+
+        <!-- SECTION: Themes -->
+        <section id="sec-themes" class="doc-section">
+          <h2>Themes & Styling</h2>
+          <p>Luxury UI supports programmatically switching color systems. Out of the box, we support two luxury themes: **Gold** (Default Obsidian & Satin Gold) and **Indigo** (Deep Indigo Accent).</p>
+
+          <div class="theme-grid">
+            <div class="theme-card gold">
+              <div class="theme-preview-color gold"></div>
+              <h4>Gold Theme</h4>
+              <p>The flagship luxury palette. Solid blacks, gold metallic accents, and high contrast typography. Best for VIP dashboards.</p>
+            </div>
+            <div class="theme-card indigo">
+              <div class="theme-preview-color indigo"></div>
+              <h4>Indigo Theme</h4>
+              <p>A modern cybernetic variant. Deep dark blues, neon-purple edges, and smooth violet hover glowing fields.</p>
+            </div>
+          </div>
+
+          <h3>Theme Configuration</h3>
+          <p>You can change the starting theme in your `CreateWindow` configuration object:</p>
+          <div class="code-container">
+            <pre><code class="language-lua">local Window = Library:CreateWindow({
+    Name = "Luxury Hub",
+    Theme = "Indigo" -- Changes primary colors and accents to Indigo
+})</code></pre>
+          </div>
+        </section>
+
+        <!-- SECTION: Window -->
+        <section id="sec-window" class="doc-section">
+          <h2>Library:CreateWindow</h2>
+          <p>Initializes the ScreenGui and returns a new Window object. This is the main dashboard frame that will contain your tabs and options.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-window"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-window">local Window = Library:CreateWindow({
+    Name = "Luxury Hub",
+    Theme = "Gold" -- "Gold" or "Indigo"
+})</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Luxury Hub"</td>
+                <td>Title displayed in the top-left logo and title card.</td>
+              </tr>
+              <tr>
+                <td>Theme</td>
+                <td>string</td>
+                <td>"Gold"</td>
+                <td>Color theme configuration. Either "Gold" or "Indigo".</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION: Tab -->
+        <section id="sec-tab" class="doc-section">
+          <h2>Window:CreateTab</h2>
+          <p>Creates a navigation page within the window. Tabs are represented in the left-hand sidebar with a custom icon and label.</p>
+
+          <div class="alert alert-info">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>The first tab created is automatically selected and shown by default when the user interface loads.</div>
+          </div>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-tab"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-tab">local Tab = Window:CreateTab({
+    Name = "Combat",
+    Icon = "rbxassetid://10888374828" -- Roblox Image Asset ID
+})</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Tab"</td>
+                <td>Label displayed in the navigation menu and topbar.</td>
+              </tr>
+              <tr>
+                <td>Icon</td>
+                <td>string</td>
+                <td>"rbxassetid://10888374828"</td>
+                <td>Roblox Image ID of the icon to display next to the tab label.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Want to see how tabs switch?</span>
+            <button class="sim-action-btn" onclick="simulatorSwitchTab('Visuals')">Switch Simulator to Visuals Tab</button>
+          </div>
+        </section>
+
+        <!-- SECTION: Section -->
+        <section id="sec-section" class="doc-section">
+          <h2>Tab:CreateSection</h2>
+          <p>Groups elements within a tab. It adds a category header in all caps and a thin styling line next to it to partition elements logically.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-section"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-section">local Section = Tab:CreateSection("Target Settings")</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Section"</td>
+                <td>Label content of the group heading.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION: Label -->
+        <section id="sec-label" class="doc-section">
+          <h2>Tab:CreateLabel</h2>
+          <p>Creates a static text label component inside the active tab. Labels are highly dynamic; using the returned controller's <code>:Set()</code> method, they can be updated live at runtime to display stats, server time, player count, ping, or toggle states.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-label"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-label">-- Create a text label
+local StatusLabel = Tab:CreateLabel({
+    Name = "Status: Idle"
+})
+
+-- Or pass a string directly for default config:
+local FpsLabel = Tab:CreateLabel("FPS: 60")
+
+-- Update the text label dynamically later (e.g. in a loop)
+StatusLabel:Set("Status: Farming Bone...")</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name / Configuration</td>
+                <td>string or table</td>
+                <td>"Label"</td>
+                <td>The text to display on the label, or a configuration table containing a <code>Name</code> field.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Returned Object Methods</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Arguments</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Set</td>
+                <td><code>newVal: string</code></td>
+                <td>Updates the label's text dynamically on screen.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION: Button -->
+        <section id="sec-button" class="doc-section">
+          <h2>Tab:CreateButton</h2>
+          <p>Creates a clickable button component. Best used to trigger single executions, such as unloading scripts, teleporting, or resetting variables.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-button"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-button">Tab:CreateButton({
+    Name = "Kill All Players",
+    Callback = function()
+        print("Killed all players!")
+    end
+})</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Button"</td>
+                <td>The text to display on the button.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>The function to run when the button is clicked.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Test a button click:</span>
+            <button class="sim-action-btn" onclick="simulatorTriggerButton()">Flash Button in Simulator</button>
+          </div>
+        </section>
+
+        <!-- SECTION: Toggle -->
+        <section id="sec-toggle" class="doc-section">
+          <h2>Tab:CreateToggle</h2>
+          <p>Creates a toggle switch widget that switches between ON (true) and OFF (false) states. Best used for enabling/disabling loops or persistent cheats (e.g. Aimbot, ESP).</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-toggle"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-toggle">local Toggle = Tab:CreateToggle({
+    Name = "Aimbot Toggle",
+    CurrentValue = false,
+    Callback = function(Value)
+        print("Aimbot state: ", Value)
+    end
+})
+
+-- Change state programmatically
+Toggle:Set(true)</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Toggle"</td>
+                <td>The text to display next to the switch.</td>
+              </tr>
+              <tr>
+                <td>CurrentValue</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Starting visual and logical state of the toggle.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Runs when the state changes. Returns the new boolean state.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Toggle state remotely:</span>
+            <button class="sim-action-btn" onclick="simulatorSetToggle(true)">Turn Toggle ON</button>
+            <button class="sim-action-btn" onclick="simulatorSetToggle(false)">Turn Toggle OFF</button>
+          </div>
+        </section>
+
+        <!-- SECTION: Slider -->
+        <section id="sec-slider" class="doc-section">
+          <h2>Tab:CreateSlider</h2>
+          <p>Creates a slider bar that allows the user to drag a handle to choose a numeric value within a specific range.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-slider"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-slider">local Slider = Tab:CreateSlider({
+    Name = "Aimbot FOV",
+    Min = 0,
+    Max = 180,
+    CurrentValue = 90,
+    Callback = function(Value)
+        print("FOV Value: ", Value)
+    end
+})
+
+-- Set value programmatically
+Slider:Set(120)</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Slider"</td>
+                <td>The text to display.</td>
+              </tr>
+              <tr>
+                <td>Min</td>
+                <td>number</td>
+                <td>0</td>
+                <td>Minimum drag value bounds.</td>
+              </tr>
+              <tr>
+                <td>Max</td>
+                <td>number</td>
+                <td>100</td>
+                <td>Maximum drag value bounds.</td>
+              </tr>
+              <tr>
+                <td>CurrentValue</td>
+                <td>number</td>
+                <td>50</td>
+                <td>Starting value.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Fires continuously while dragging or when set. Returns the current number.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Change slider values:</span>
+            <button class="sim-action-btn" onclick="simulatorSetSlider(45)">Set to 45</button>
+            <button class="sim-action-btn" onclick="simulatorSetSlider(135)">Set to 135</button>
+          </div>
+        </section>
+
+        <!-- SECTION: Dropdown -->
+        <section id="sec-dropdown" class="doc-section">
+          <h2>Tab:CreateDropdown</h2>
+          <p>Creates a select menu containing multiple options. Clicking the menu expands it with a clean sliding animation, letting the user select a single active option.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-dropdown"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-dropdown">local Dropdown = Tab:CreateDropdown({
+    Name = "Aim Bone Target",
+    Options = {"Head", "Torso", "Left Arm", "Right Arm"},
+    CurrentOption = "Head",
+    Callback = function(Option)
+        print("Target part: ", Option)
+    end
+})
+
+-- Set value programmatically
+Dropdown:Set("Torso")</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Dropdown"</td>
+                <td>Text label to show.</td>
+              </tr>
+              <tr>
+                <td>Options</td>
+                <td>table</td>
+                <td>{}</td>
+                <td>Array list of string choices.</td>
+              </tr>
+              <tr>
+                <td>CurrentOption</td>
+                <td>string</td>
+                <td>""</td>
+                <td>Starting active choice.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Fires when the option is changed. Returns the selected string choice.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Manipulate dropdown options:</span>
+            <button class="sim-action-btn" onclick="simulatorSetDropdown('Torso')">Select Torso</button>
+            <button class="sim-action-btn" onclick="simulatorSetDropdown('Left Arm')">Select Left Arm</button>
+          </div>
+        </section>
+
+        <!-- SECTION: TextBox -->
+        <section id="sec-textbox" class="doc-section">
+          <h2>Tab:CreateTextBox</h2>
+          <p>Creates a text box component that accepts typed keyboard inputs. Fires the callback once the user finishes typing and presses enter or clicks away.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-textbox"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-textbox">local TextBox = Tab:CreateTextBox({
+    Name = "WalkSpeed Override",
+    Placeholder = "Enter value...",
+    Callback = function(Text)
+        local Num = tonumber(Text)
+        if Num then
+            print("Set speed value: ", Num)
+        end
+    end
+})
+
+-- Set text programmatically
+TextBox:Set("100")</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Text Input"</td>
+                <td>Label of the input frame.</td>
+              </tr>
+              <tr>
+                <td>Placeholder</td>
+                <td>string</td>
+                <td>"Type here..."</td>
+                <td>Hint text shown when the input box is empty.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Fires on enter key or focus lost. Returns the string content.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION: Keybind -->
+        <section id="sec-keybind" class="doc-section">
+          <h2>Tab:CreateKeybind</h2>
+          <p>Binds a key on the keyboard to trigger a specific callback. Users can click the keybind box to re-bind it to any key dynamically.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-keybind"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-keybind">local Keybind = Tab:CreateKeybind({
+    Name = "Self Destruct Bind",
+    CurrentKeybind = "Delete",
+    Callback = function(Key)
+        print("Self destruct activated!")
+    end
+})</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Keybind"</td>
+                <td>The text to show.</td>
+              </tr>
+              <tr>
+                <td>CurrentKeybind</td>
+                <td>string</td>
+                <td>"None"</td>
+                <td>Starting bound key name (e.g. "RightControl", "F").</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Fires when the key is pressed. Returns the KeyCode object.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- SECTION: Colorpicker -->
+        <section id="sec-colorpicker" class="doc-section">
+          <h2>Tab:CreateColorpicker</h2>
+          <p>Adds a customizable color selector. Clicking it drops down a panel containing standard presets of colors that can be selected.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-colorpicker"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-colorpicker">local Colorpicker = Tab:CreateColorpicker({
+    Name = "Chamber Glow Color",
+    Default = Color3.fromRGB(212, 175, 55),
+    Callback = function(Color)
+        print("Selected Color RGB: ", Color.R, Color.G, Color.B)
+    end
+})
+
+-- Set color programmatically
+Colorpicker:Set(Color3.fromRGB(255, 0, 0))</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>string</td>
+                <td>"Colorpicker"</td>
+                <td>Label of the picker.</td>
+              </tr>
+              <tr>
+                <td>Default</td>
+                <td>Color3</td>
+                <td>Color3.fromRGB(255, 255, 255)</td>
+                <td>Default starting color.</td>
+              </tr>
+              <tr>
+                <td>Callback</td>
+                <td>function</td>
+                <td>nil</td>
+                <td>Fires when color is picked. Returns the selected Color3 object.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Test a preset picker selection:</span>
+            <button class="sim-action-btn" onclick="simulatorSetColor('#3bff3b')">Pick Green</button>
+            <button class="sim-action-btn" onclick="simulatorSetColor('#ff3b3b')">Pick Red</button>
+          </div>
+        </section>
+
+        <!-- SECTION: Notifications -->
+        <section id="sec-notification" class="doc-section">
+          <h2>Library:Notify</h2>
+          <p>Triggers a floating notification toast. These toasts appear in the bottom-right corner of the screen, slide in smoothly, and fade away automatically after their duration concludes.</p>
+
+          <h3>Code Sample</h3>
+          <div class="code-container">
+            <button class="copy-btn" data-clipboard-target="#code-notification"><i class="fa-regular fa-copy"></i> Copy</button>
+            <pre><code class="language-lua" id="code-notification">Library:Notify({
+    Title = "Luxury UI Engine",
+    Content = "The script loaded successfully inside 0.14 seconds.",
+    Duration = 5,
+    Icon = "rbxassetid://10888373307" -- Bell Asset ID
+})</code></pre>
+          </div>
+
+          <h3>Parameters</h3>
+          <table class="params-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Title</td>
+                <td>string</td>
+                <td>"Notification"</td>
+                <td>Main bold title of the notification card.</td>
+              </tr>
+              <tr>
+                <td>Content</td>
+                <td>string</td>
+                <td>""</td>
+                <td>Details and descriptions of the event.</td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td>number</td>
+                <td>4</td>
+                <td>Time in seconds before the notification closes.</td>
+              </tr>
+              <tr>
+                <td>Icon</td>
+                <td>string</td>
+                <td>"http://www.roblox.com/asset/?id=6023426923"</td>
+                <td>Ignored. Always displays the custom military badge icon (user cannot change).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="interactive-action-card">
+            <span>Send a toast to the simulator:</span>
+            <button class="sim-action-btn" onclick="simulatorSendNotification()">Trigger Notification Toast</button>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Roblox UI Interactive Simulator (Right Panel) -->
+    <section class="simulator-panel" id="simulator-panel">
+      <div class="simulator-wrapper">
+        <div class="simulator-header">
+          <div class="simulator-details">
+            <span class="engine-title"><i class="fa-solid fa-gamepad"></i> ROBLOX GAME ENGINE</span>
+            <span class="fps-counter">60.0 FPS</span>
+          </div>
+          <div class="simulator-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        
+        <!-- Game View Area -->
+        <div class="game-view" id="game-view">
+          
+          <!-- Notification Spawner Container -->
+          <div class="sim-toast-container" id="sim-toast-container"></div>
+          
+          <!-- Simulator Main UI Frame -->
+          <div class="sim-main-frame" id="sim-main-frame">
+            
+            <!-- Draggable Panel -->
+            <div class="sim-drag-handle" id="sim-drag-handle"></div>
+
+            <!-- Left Sidebar Navigation -->
+            <aside class="sim-sidebar">
+              <div class="sim-brand">
+                <i class="fa-solid fa-crown text-gold brand-logo-icon"></i>
+                <span class="sim-brand-title">Luxury Hub</span>
+                <span class="sim-brand-badge">v1.0</span>
+              </div>
+              
+              <!-- Tab List -->
+              <div class="sim-tab-list" id="sim-tab-list">
+                <button class="sim-tab-btn active" data-tab="Combat">
+                  <div class="sim-tab-indicator"></div>
+                  <i class="fa-solid fa-crosshairs"></i>
+                  <span>Combat</span>
+                </button>
+                <button class="sim-tab-btn" data-tab="Visuals">
+                  <div class="sim-tab-indicator"></div>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Visuals</span>
+                </button>
+                <button class="sim-tab-btn" data-tab="Settings">
+                  <div class="sim-tab-indicator"></div>
+                  <i class="fa-solid fa-gear"></i>
+                  <span>Settings</span>
+                </button>
+              </div>
+
+              <!-- User Profile Card -->
+              <div class="sim-user-profile">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=80&h=80&q=80" alt="Avatar" class="sim-avatar">
+                <div class="sim-user-info">
+                  <span class="sim-display-name">AlwayLoseCC</span>
+                  <span class="sim-username">NEVER</span>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Right Content Container -->
+            <main class="sim-content">
+              <header class="sim-content-header">
+                <span id="sim-current-tab-name">Combat</span>
+                <div class="sim-window-controls">
+                  <button id="sim-btn-minimize" title="Minimize">-</button>
+                  <button id="sim-btn-close" title="Close">×</button>
+                </div>
+              </header>
+
+              <!-- Pages Frame -->
+              <div class="sim-pages" id="sim-pages">
+                
+                <!-- PAGE 1: Combat -->
+                <div class="sim-page active" data-page="Combat">
+                  <div class="sim-section-header">
+                    <span class="sim-section-title">TARGET SETTINGS</span>
+                    <div class="sim-section-line"></div>
+                  </div>
+                  
+                  <!-- Button component -->
+                  <button class="sim-component-btn" id="sim-element-kill-all">
+                    <span>Kill All Players</span>
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+
+                  <!-- Toggle component -->
+                  <div class="sim-component-toggle" id="sim-element-aimbot-toggle">
+                    <div class="sim-toggle-text">Aimbot Toggle</div>
+                    <button class="sim-toggle-pill">
+                      <span class="sim-toggle-dot"></span>
+                    </button>
+                  </div>
+
+                  <!-- Slider component -->
+                  <div class="sim-component-slider" id="sim-element-fov-slider">
+                    <div class="sim-slider-info">
+                      <span>Aimbot FOV</span>
+                      <span class="sim-slider-val" id="sim-fov-val">90</span>
+                    </div>
+                    <div class="sim-slider-track">
+                      <div class="sim-slider-fill" style="width: 50%;"></div>
+                      <div class="sim-slider-handle" style="left: 50%;"></div>
+                    </div>
+                  </div>
+
+                  <!-- Dropdown component -->
+                  <div class="sim-component-dropdown" id="sim-element-dropdown">
+                    <button class="sim-dropdown-header">
+                      <span>Aim Bone Target</span>
+                      <div class="sim-dropdown-right">
+                        <span class="sim-dropdown-val" id="sim-drop-val">Head</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                    </button>
+                    <div class="sim-dropdown-list" id="sim-dropdown-options">
+                      <button class="sim-dropdown-option active">Head</button>
+                      <button class="sim-dropdown-option">Torso</button>
+                      <button class="sim-dropdown-option">Left Arm</button>
+                      <button class="sim-dropdown-option">Right Arm</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PAGE 2: Visuals -->
+                <div class="sim-page" data-page="Visuals">
+                  <div class="sim-section-header">
+                    <span class="sim-section-title">ESP VISUALS</span>
+                    <div class="sim-section-line"></div>
+                  </div>
+
+                  <!-- Toggle component -->
+                  <div class="sim-component-toggle" id="sim-element-esp-toggle">
+                    <div class="sim-toggle-text">Player ESP</div>
+                    <button class="sim-toggle-pill">
+                      <span class="sim-toggle-dot"></span>
+                    </button>
+                  </div>
+
+                  <!-- Colorpicker component -->
+                  <div class="sim-component-colorpicker" id="sim-element-colorpicker">
+                    <button class="sim-colorpicker-header">
+                      <span>Chamber Glow Color</span>
+                      <div class="sim-color-preview" id="sim-color-picker-box"></div>
+                    </button>
+                    <div class="sim-colorpicker-dropdown" id="sim-colorpicker-panel">
+                      <button class="sim-color-preset" style="background-color: #ff3c3c;"></button>
+                      <button class="sim-color-preset" style="background-color: #3cff3c;"></button>
+                      <button class="sim-color-preset" style="background-color: #3c3cff;"></button>
+                      <button class="sim-color-preset" style="background-color: #ffff3c;"></button>
+                      <button class="sim-color-preset" style="background-color: #ff3cff;"></button>
+                      <button class="sim-color-preset" style="background-color: #3cffff;"></button>
+                      <button class="sim-color-preset" style="background-color: #ffffff;"></button>
+                      <button class="sim-color-preset" style="background-color: #d4af37;"></button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PAGE 3: Settings -->
+                <div class="sim-page" data-page="Settings">
+                  <div class="sim-section-header">
+                    <span class="sim-section-title">INTERFACE CONFIG</span>
+                    <div class="sim-section-line"></div>
+                  </div>
+
+                  <!-- Keybind component -->
+                  <div class="sim-component-keybind" id="sim-element-keybind">
+                    <div class="sim-keybind-text">Self Destruct Bind</div>
+                    <button class="sim-keybind-trigger">Delete</button>
+                  </div>
+
+                  <!-- TextBox component -->
+                  <div class="sim-component-textbox" id="sim-element-textbox">
+                    <div class="sim-textbox-text">WalkSpeed Override</div>
+                    <input type="text" class="sim-textbox-input" placeholder="Enter value...">
+                  </div>
+                </div>
+
+              </div>
+            </main>
+          </div>
+          
+          <!-- Keybind overlay simulator indicator -->
+          <div class="sim-minimized-alert" id="sim-minimized-alert">
+            <span>Luxury UI Minimized.<br><small>Click anywhere in Roblox or press LeftCtrl to open.</small></span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
